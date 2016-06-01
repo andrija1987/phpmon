@@ -2,8 +2,8 @@
 
 $host = 'localhost';
 $user = 'root';
-$pass = '';
-$data = 'phpuptime';
+$pass = 'Lokarda7';
+$data = 'phpmon';
 $sSetting['refresh'] = "10000";
 
 mysql_connect($host, $user, $pass) or die(mysql_error());

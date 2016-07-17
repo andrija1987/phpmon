@@ -1,9 +1,9 @@
 <?php
 
 $host = 'localhost';
-$user = 'root';
-$pass = 'Lokarda7';
-$data = 'phpmon';
+$user = 'wp_user';
+$pass = 'wp_pass';
+$data = 'wp_db';
 $sSetting['refresh'] = "10000";
 
 mysql_connect($host, $user, $pass) or die(mysql_error());

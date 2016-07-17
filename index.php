@@ -5,7 +5,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 global $sJavascript, $sTable;
-$con=mysqli_connect("localhost","root","Lokarda7","phpmon");
+$con = mysqli_connect("localhost","database","database","database");
 $query=mysqli_query($con, "SELECT * FROM servers ORDER BY id") or die(mysqli_error());
 	$sJavascript .= '<script type="text/javascript">
 		function uptime() {

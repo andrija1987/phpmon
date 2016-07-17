@@ -3,19 +3,19 @@
 	<head>
 		<title>php :: mon</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<!--<meta http-equiv="refresh" content="5">-->
 		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
-		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">	
+		<!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">	-->
 		<link href="<?php echo $template; ?>css/custom.css" rel="stylesheet">
+		<!--<meta http-equiv="refresh" content="10">-->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
 			
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 	</head>
 <body>
 	
-	<nav class="navbar navbar-inverse">
-		<div class="navbar-brand"> 
-			<h3 style="color: white;text-align: center;">php :: mon </h3>
+	<nav class="navbar navbar-full navbar-inverse">
+		<div class="navbar-brand center-block"> 
+			<h3>php :: mon </h3>
 		</div> 
 		
 	</nav>
@@ -28,9 +28,9 @@
 			<tr>
 				<th id="status" style="text-align: center;" >Status</th>
 				<th id="name" style="text-align: center;">Name</th>
-				<th id="type">Type</th>
-				<th id="host">Host</th>
-				<th id="location">Location</th>
+				<!--<th id="type">Type</th>-->
+				<th id="host">Hostname</th>
+				<!--<th id="location">Location</th>-->
 				<th id="uptime">Uptime</th>
 				<th id="load">Load</th>
 				<th id="ram">RAM</th>
@@ -58,16 +58,6 @@
 	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 	<?php echo $sJavascript; ?>
 
-	<!--<script type="text/javascript">
-	setTimeout(function refresh5(){ window.location.href = window.location.href; }, 5000);</script>-->
-
-    <!-- Flot Charts JavaScript -->
-    <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
-    <script src="plugins/flot/jquery.flot.js"></script>
-    <script src="plugins/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="plugins/flot/jquery.flot.resize.js"></script>
-    <script src="plugins/flot/jquery.flot.pie.js"></script>
-    <script src="plugins/flot/flot-data.js"></script>
 
 </body>
 </html>

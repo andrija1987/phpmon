@@ -1,5 +1,9 @@
 <?php
-include('../includes/config.php');
+include_once('config.php');
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+
+$con=mysqli_connect("localhost","root","Lokarda7","phpmon");
 function get_data($url) {
   $ch = curl_init();
   $timeout = 5;
@@ -10,10 +14,10 @@ function get_data($url) {
   curl_close($ch);
   return $data;
 }
-$sId = mysql_real_escape_string($_GET['url']);
+$sId = mysqli_real_escape_string($con, ($_GET['url']));
 if(is_numeric($sId)){
-	$data = mysql_query("SELECT * FROM servers WHERE id='$sId'");
-	$result = mysql_fetch_array($data);
+	$data = mysqli_query($con, "SELECT * FROM servers WHERE id='$sId'");
+	$result = mysqli_fetch_array($data);
 	$url = "http://".$result['url']."/uptime.php";
 	$output = get_data($url);
 	if(($output == NULL) || ($output === false)){

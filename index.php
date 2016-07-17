@@ -1,12 +1,17 @@
 <?php
-include('./includes/config.php');
-global $sJavascript, $sTable;
+include_once('config.php');
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-$query = mysql_query("SELECT * FROM servers ORDER BY id") or die(mysql_error());
+global $sJavascript, $sTable;
+$con=mysqli_connect("localhost","root","Lokarda7","phpmon");
+$query=mysqli_query($con, "SELECT * FROM servers ORDER BY id") or die(mysqli_error());
 	$sJavascript .= '<script type="text/javascript">
 		function uptime() {
 			$(function() {';
-while($result = mysql_fetch_array($query)){
+			
+while($result = mysqli_fetch_array($query)) {
 	$sJavascript .= '$.getJSON("pull/index.php?url='.$result["id"].'",function(result){
 	$("#online'.$result["id"].'").html(result.online);
 	$("#uptime'.$result["id"].'").html(result.uptime);
@@ -23,9 +28,7 @@ while($result = mysql_fetch_array($query)){
 				</div>
 			</td>
 			<td>'.$result["name"].'</td>
-			<td>'.$result["type"].'</td>
 			<td>'.$result["host"].'</td>
-			<td>'.$result["location"].'</td>
 			<td id="uptime'.$result["id"].'">n/a</td>
 			<td id="load'.$result["id"].'">n/a</td>
 			<td id="memory'.$result["id"].'">
@@ -48,13 +51,13 @@ while($result = mysql_fetch_array($query)){
 	setInterval(uptime, '.$sSetting['refresh'].');
 	</script>';
 
-include($index);
+include ($index);
 
 
 
 ?>
-<!--
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+
+<!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>-->

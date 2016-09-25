@@ -5,8 +5,11 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 global $sJavascript, $sTable;
-$con=mysqli_connect("localhost","root","Lokarda7","phpmon");
-$query=mysqli_query($con, "SELECT * FROM servers ORDER BY id") or die(mysqli_error());
+$mysqlCon = mysqli_connect(getenv('OPENSHIFT_MYSQL_DB_HOST'), getenv('OPENSHIFT_MYSQL_DB_USERNAME'), getenv('OPENSHIFT_MYSQL_DB_PASSWORD'), "", getenv('OPENSHIFT_MYSQL_DB_PORT')) or die("Error: " . mysqli_error($mysqlCon));
+mysqli_select_db($mysqlCon, getenv('OPENSHIFT_APP_NAME')) or die("Error: " . mysqli_error($mysqlCon));
+
+
+$query=mysqli_query($mysqlCon, "SELECT * FROM servers ORDER BY id") or die(mysqli_error());
 	$sJavascript .= '<script type="text/javascript">
 		function uptime() {
 			$(function() {';

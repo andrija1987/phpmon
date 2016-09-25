@@ -14,7 +14,8 @@ mysql_select_db($data) or die(mysql_error());*/
 
 //Template options: "default" and "dark"
 
-$con = mysqli_connect("mysql-phpmon.apps.rhel-master.openshift","phpmon","geslo123","phpmon");
+$database = getenv('OPENSHIFT_MYSQL_DB_HOST');
+$con = mysqli_connect($database,"phpmon,"geslo123","phpmon");
 $sSetting['refresh'] = "10000";
 $template = "./templates/default/";
 $index = $template . "index.php";

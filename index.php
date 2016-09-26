@@ -5,11 +5,25 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 global $sJavascript, $sTable;
-$con = mysqli_connect(getenv('OPENSHIFT_MYSQL_DB_HOST'), getenv('OPENSHIFT_MYSQL_DB_USERNAME'), getenv('OPENSHIFT_MYSQL_DB_PASSWORD'), "", getenv('OPENSHIFT_MYSQL_DB_PORT')) or die("Error: " . mysqli_error($con));
-mysqli_select_db($con, getenv('OPENSHIFT_APP_NAME')) or die("Error: " . mysqli_error($con));
+
+$dbhost = getenv("MYSQL_SERVICE_HOST");
+$dbport = getenv("MYSQL_SERVICE_PORT");
+$dbuser = getenv("MYSQL_USER");
+$dbpwd = getenv("MYSQL_PASSWORD");
+$dbname = getenv("MYSQL_DATABASE");
+$connection = new mysqli($dbhost, phpmon, geslo123, phpmon);
+if ($connection->connect_errno) {
+    printf("Connect failed: %s\n", $mysqli->connect_error);
+    exit();
+} else {
+    printf("Connected to the database");
+}
+$connection->close();
 
 
-$query=mysqli_query($con, "SELECT * FROM servers ORDER BY id") or die(mysqli_error());
+
+
+$query=mysqli_query($connection, "SELECT * FROM servers ORDER BY id") or die(mysqli_error());
 	$sJavascript .= '<script type="text/javascript">
 		function uptime() {
 			$(function() {';
